@@ -69,16 +69,6 @@
       enabled: yes
       daemon_reload: yes
 
-  handlers:
-  - name: Restart Rclone service
-    systemd:
-      name: rclone.service
-      state: restarted
-
-  - name: Reload systemd daemon
-    systemd:
-      daemon_reload: yes
-
   - name: Download Latest MCXboxBroadcastStandalone.jar
     get_url:
       url: "https://github.com/MCXboxBroadcast/Broadcaster/releases/latest/download/MCXboxBroadcastStandalone.jar"
@@ -94,6 +84,15 @@
   - name: Start Docker
     ansible.builtin.shell: cd ~/bedrock && docker compose up -d --force-recreate --remove-orphans
 
+  handlers:
+  - name: Restart Rclone service
+    systemd:
+      name: rclone.service
+      state: restarted
+
+  - name: Reload systemd daemon
+    systemd:
+      daemon_reload: yes
 
   # - name: Reboot the machine
   #   reboot:
