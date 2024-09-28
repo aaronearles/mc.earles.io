@@ -6,4 +6,4 @@ linode_stackscript_id     = ""
 linode_firewall_source_ip = ["0.0.0.0/0"]
 linode_firewall_ports     = ""
 linode_firewall_id        = "902331" //Minecraft
-dns_record = "mc"
+dns_record                = "mc"
