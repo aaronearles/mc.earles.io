@@ -30,7 +30,7 @@ resource "linode_firewall" "firewall" {
 resource "cloudflare_record" "dns_record" {
   count   = var.linode_label != "" ? 1 : 0
   zone_id = var.cloudflare_zone_id
-  name    = var.linode_label
+  name    = var.dns_record
   content = linode_instance.instance.ip_address
   type    = "A"
   ttl     = 60

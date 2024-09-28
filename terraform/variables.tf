@@ -20,3 +20,4 @@ variable "linode_stackscript_id" {}
 variable "linode_firewall_id" {}        // If an existing firewall id is provided, it will be used. Otherwise a new firewall will be created using the source_ip and ports below.
 variable "linode_firewall_source_ip" {} // A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
 variable "linode_firewall_ports" {}     // A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+variable "dns_record" {}
