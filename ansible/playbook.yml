@@ -24,6 +24,9 @@
         - net-tools
         - tmux
       update_cache: yes
+
+  - name: install docker
+    ansible.builtin.shell: curl -fsSL https://get.docker.com | sh
   
   - name: install Rclone and dependencies
     apt:
@@ -76,11 +79,27 @@
     systemd:
       daemon_reload: yes
 
-  - name: Reboot the machine
-    reboot:
-      msg: "Rebooting machine after initial setup"
-      connect_timeout: 5
-      reboot_timeout: 300
-      pre_reboot_delay: 0
-      post_reboot_delay: 60
-      test_command: uptime
+  - name: Download Latest MCXboxBroadcastStandalone.jar
+    get_url:
+      url: "https://github.com/MCXboxBroadcast/Broadcaster/releases/latest/download/MCXboxBroadcastStandalone.jar"
+      dest: "/mnt/b2/earles-bedrock/MCXboxBroadcastStandalone.jar"
+    register: mcxboxbroadcast_download
+
+  - name: Download docker-compose.yml
+    get_url:
+      url: "https://raw.githubusercontent.com/earlesio/mc.earles.io/refs/heads/main/docker/docker-compose.yml"
+      dest: "~/bedrock/docker-compose.yml"
+    register: docker-compose_download
+
+  - name: Start Docker
+    ansible.builtin.shell: cd ~/bedrock && docker compose up -d --force-recreate --remove-orphans
+
+
+  # - name: Reboot the machine
+  #   reboot:
+  #     msg: "Rebooting machine after initial setup"
+  #     connect_timeout: 5
+  #     reboot_timeout: 300
+  #     pre_reboot_delay: 0
+  #     post_reboot_delay: 60
+  #     test_command: uptime
