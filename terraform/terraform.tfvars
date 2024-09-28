@@ -1,4 +1,4 @@
-linode_label              = "mcearlesio"
+linode_label              = "mc"
 linode_region             = "us-lax"
 linode_image              = "linode/ubuntu24.04"
 linode_type               = "g6-nanode-1"
