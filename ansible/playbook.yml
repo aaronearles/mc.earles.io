@@ -83,13 +83,13 @@
     get_url:
       url: "https://github.com/MCXboxBroadcast/Broadcaster/releases/latest/download/MCXboxBroadcastStandalone.jar"
       dest: "/mnt/b2/earles-bedrock/MCXboxBroadcastStandalone.jar"
-    register: mcxboxbroadcast_download
+    # register: mcxboxbroadcast_download
 
   - name: Download docker-compose.yml
     get_url:
       url: "https://raw.githubusercontent.com/earlesio/mc.earles.io/refs/heads/main/docker/docker-compose.yml"
       dest: "~/bedrock/docker-compose.yml"
-    register: docker-compose_download
+    # register: docker-compose_download
 
   - name: Start Docker
     ansible.builtin.shell: cd ~/bedrock && docker compose up -d --force-recreate --remove-orphans
