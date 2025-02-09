@@ -33,7 +33,7 @@ services:
       # - LEVEL_TYPE
       - DEFAULT_PLAYER_PERMISSION_LEVEL=member
       # - OPS=2533275026015377 #aearles
-      - OPS=2533275026015377, 2535421067961767, 2535407829863530 #aearles, hcearles, ttearles
+      - OPS=2533275026015377,2535421067961767,2535407829863530 #aearles, hcearles, ttearles
     volumes:
       - bedrock-data:/data
      # - /mnt/b2/earles-bedrock/worlds:/data/worlds
@@ -57,7 +57,7 @@ services:
 
 volumes:
   bedrock-data:
-  # bedrock-config:
+  bedrock-config:
 
 networks:
   backend:
